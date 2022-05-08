@@ -1,0 +1,32 @@
+Select *
+From PortfolioProject1.dbo.TotalConsumption
+
+Select ISNULL(perCapitaCons2016, 0 )
+From TotalConsumption
+
+Update TotalConsumption
+Set perCapitaCons2016 = 0
+Where perCapitaCons2016 Is NULL;
+
+
+Select country, totCons2019, Metric
+From TotalConsumption
+
+Select country, perCapitaCons2016, Metric
+From TotalConsumption
+
+Select country, MAX(perCapitaCons2016) as Consumption
+From PortfolioProject1.dbo.TotalConsumption
+Group by country
+Order by Consumption desc
+
+
+Select country, MAX(totCons2019) as Consumption2
+From PortfolioProject1.dbo.TotalConsumption
+Group by country
+Order by Consumption2 desc
+
+
+Select SUM(totCons2019) as Total_Consumption
+From PortfolioProject1.dbo.TotalConsumption
+Order by 1
